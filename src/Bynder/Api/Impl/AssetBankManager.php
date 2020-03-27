@@ -191,6 +191,23 @@ class AssetBankManager implements IAssetBankManager
         );
     }
 
+
+    /**
+     * Gets all the options for a specific meta property
+     *
+     * @param string $propertyId Meta property id
+     * @param array $query
+     *
+     * @return \GuzzleHttp\Promise\Promise with all meta property options dependencies.
+     * @throws \Exception
+     */
+    public function getOptionsForMetaproperty($propertyId, $query = null)
+    {
+        return $this->requestHandler->sendRequestAsync('GET', 'api/v4/metaproperties/' . $propertyId . '/options/',
+            ['query' => $query]
+        );
+    }
+
     /**
      * Retrieves a list of all tags available.
      *
@@ -206,6 +223,21 @@ class AssetBankManager implements IAssetBankManager
             ['query' => $query]
         );
     }
+
+    /**
+     * Dig trough some trashy trash.
+     *
+     * @param  array  $query
+     * @return \GuzzleHttp\Promise\Promise with all meta property options dependencies.
+     * @throws \Exception
+     */
+    public function getTrash($query = null)
+    {
+        return $this->requestHandler->sendRequestAsync('GET', 'api/trash/media/',
+            ['query' => $query]
+        );
+    }
+
 
     /**
      * Retrieves a list of all categories available.
